@@ -7,6 +7,8 @@ function App() {
       <header>My Todo List</header>
     </div>
     <input data-testid='todo-input-box'></input>
+    <button data-testid='add-todo-button'>
+    </button>
     <select data-testid='filter-menu'>
       <option>All</option>
       <option>Completed</option>

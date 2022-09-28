@@ -22,3 +22,9 @@ test('that filter menu is rendered and contains options in correct order', () =>
   expect(screen.getByTestId('filter-menu').options[1].text).toBe('Completed')
   expect(screen.getByTestId('filter-menu').options[2].text).toBe('Uncompleted')
 })
+
+test('that the button to add new todo is rendered', () => {
+  render(<App />)
+  screen.getByTestId('add-todo-button')
+})
+
