@@ -10,3 +10,8 @@ test('that dark/light mode button is rendered', () => {
   render(<App />);
   screen.getByTestId('dark-light-mode-button')
 });
+
+test('that input box is rendered', () => {
+  render(<App />)
+  screen.getByTestId('todo-input-box')
+})
