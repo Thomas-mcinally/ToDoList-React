@@ -32,10 +32,9 @@ function App() {
       </select>
     </form>
     <ul data-testid='todo-list'>
-      <li>123456</li>
-      {/* {
+      {
         todoList.map((todo, index) => <li key={index}>{todo}</li>)
-      } */}
+      }
     </ul>
 
     </>

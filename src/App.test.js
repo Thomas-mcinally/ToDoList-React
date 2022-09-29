@@ -2,6 +2,8 @@ import { render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import App from './App';
 
+var randomstring = require('randomstring')
+const myRandomString = randomstring.generate();
 
 test('that headline is on page', () => {
   render(<App />);
@@ -47,14 +49,14 @@ test('that when input is submitted the box becomes empty afterwards', () => {
   expect(todoInputField.value).toBe('')
 })
 
-test('that when enter text in input box and submit it shows up in list', () => {
+test('that when enter random text in input box and submit it shows up in list', () => {
   render(<App/>)
   const todoInputField = screen.getByTestId('todo-input-box')
   const todoSubmitButton = screen.getByTestId('add-todo-button')
   const todoList = screen.getByTestId('todo-list')
   
-  userEvent.type(todoInputField, '123456')
+  userEvent.type(todoInputField, myRandomString)
   userEvent.click(todoSubmitButton)
   
-  expect(todoList.children[0].textContent).toBe('123456')
+  expect(todoList.children[0].textContent).toBe(myRandomString)
 })
