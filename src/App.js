@@ -36,9 +36,9 @@ function App() {
       </select>
     </form>
     <ul data-testid='todo-list'>
-      {
+      {/* {
         todoList.map((todo, index) => <li key={index}>{todo}</li>)
-      }
+      } */}
     </ul>
     </>
   );

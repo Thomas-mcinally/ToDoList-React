@@ -44,6 +44,4 @@ test('that when input is submitted the box becomes empty afterwards', () => {
   userEvent.click(todoSubmitButton)
 
   expect(todoInputField.value).toBe('')
-  
-  screen.getByText('123456')
 })
