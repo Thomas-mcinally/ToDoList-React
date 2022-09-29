@@ -14,6 +14,7 @@ function App() {
       <option>Completed</option>
       <option>Uncompleted</option>
     </select>
+    <ul data-testid='todo-list'></ul>
     </>
   );
 }

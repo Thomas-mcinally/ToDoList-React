@@ -28,3 +28,14 @@ test('that the button to add new todo is rendered', () => {
   screen.getByTestId('add-todo-button')
 })
 
+test('that the unordered list containing todo items is rendered', () => {
+  render(<App />)
+  screen.getByTestId('todo-list')
+})
+
+//questions for Adham:
+// WHat improvements can be made to what i have done so far?
+// Am i testing outside-in?
+
+//Tips on implementing the todo list? (requires state variables etc....)
+
