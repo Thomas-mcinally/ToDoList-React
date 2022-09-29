@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import App from './App';
 
 test('that headline is on page', () => {
@@ -18,9 +19,10 @@ test('that input box is rendered', () => {
 
 test('that filter menu is rendered and contains options in correct order', () => {
   render(<App />)
-  expect(screen.getByTestId('filter-menu').options[0].text).toBe('All')
-  expect(screen.getByTestId('filter-menu').options[1].text).toBe('Completed')
-  expect(screen.getByTestId('filter-menu').options[2].text).toBe('Uncompleted')
+  screen.getByTestId('filter-menu');
+  expect(screen.getByTestId('filter-menu').options[0].text).toBe('All');
+  expect(screen.getByTestId('filter-menu').options[1].text).toBe('Completed');
+  expect(screen.getByTestId('filter-menu').options[2].text).toBe('Uncompleted');
 })
 
 test('that the button to add new todo is rendered', () => {
@@ -33,9 +35,15 @@ test('that the unordered list containing todo items is rendered', () => {
   screen.getByTestId('todo-list')
 })
 
-//questions for Adham:
-// WHat improvements can be made to what i have done so far?
-// Am i testing outside-in?
+test('that when input is submitted the box becomes empty afterwards', () => {
+  render(<App />)
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
 
-//Tips on implementing the todo list? (requires state variables etc....)
+  userEvent.type(todoInputField, '123456');
+  userEvent.click(todoSubmitButton)
 
+  expect(todoInputField.value).toBe('')
+  
+  screen.getByText('123456')
+})
