@@ -4,7 +4,7 @@ import { useState } from 'react'
 function App() {
   const handleSubmit = (event) => { 
     event.preventDefault()
-    const updatedTodolist = [...todoList, event.target.children[0].value]
+    const updatedTodolist = [event.target.children[0].value, ...todoList]
     setTodoList(updatedTodolist)
     setInputValue('')
     

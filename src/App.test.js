@@ -60,3 +60,19 @@ test('that when enter random text in input box and submit it shows up in list', 
   
   expect(todoList.children[0].textContent).toBe(myRandomString)
 })
+
+test('that new todo list item is added to top of list', () => {
+  render(<App/>)
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
+  const todoList = screen.getByTestId('todo-list')
+  
+  userEvent.type(todoInputField, '1')
+  userEvent.click(todoSubmitButton)
+  userEvent.type(todoInputField, '2')
+  userEvent.click(todoSubmitButton)
+
+  expect(todoList.children[0].textContent).toBe('2')
+}
+
+)
