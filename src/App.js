@@ -4,20 +4,16 @@ import { useState } from 'react'
 function App() {
   const handleSubmit = (event) => { 
     event.preventDefault()
-    console.log('submit')
-    console.log(event.target.children[0].value)
     const updatedTodolist = [...todoList, event.target.children[0].value]
     setTodoList(updatedTodolist)
     setInputValue('')
     
   }
   const handleChange = (event) => { 
-    console.log('change')
     setInputValue(event.target.value)
   }
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
-  console.log('refresh')
   return (
     <>
     <button data-testid='dark-light-mode-button'>
@@ -36,10 +32,12 @@ function App() {
       </select>
     </form>
     <ul data-testid='todo-list'>
+      <li>123456</li>
       {/* {
         todoList.map((todo, index) => <li key={index}>{todo}</li>)
       } */}
     </ul>
+
     </>
   );
 }
