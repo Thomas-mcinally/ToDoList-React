@@ -73,6 +73,19 @@ test('that new todo list item is added to top of list', () => {
   userEvent.click(todoSubmitButton)
 
   expect(todoList.children[0].textContent).toBe('2')
-}
+})
 
-)
+test('that when reload page elements are still there', () => {
+  render(<App/>)
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
+  const todoList = screen.getByTestId('todo-list')
+  
+  userEvent.type(todoInputField, '1')
+  userEvent.click(todoSubmitButton)
+  window.location.reload(true)
+  expect(todoList.children[0].textContent).toBe('1')
+})
+
+// STILL NEED TO GET THE ABOVE TEST TO FAIL.
+// When reload page, there should be no list items since we havent implemented local storage yet.
