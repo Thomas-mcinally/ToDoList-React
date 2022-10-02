@@ -37,8 +37,12 @@ function App() {
       }
     </ul>
 
+
     </>
   );
 }
 
 export default App;
+
+// Good article for localstorage implementation
+//  https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b
