@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 function App() {
@@ -6,14 +6,31 @@ function App() {
     event.preventDefault()
     const updatedTodolist = [event.target.children[0].value, ...todoList]
     setTodoList(updatedTodolist)
+    saveTodosLocally(updatedTodolist)
     setInputValue('')
-    
   }
+
+  function fetchSavedTodos() {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+      todos = [];
+    } else {
+      todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    setTodoList(todos)
+  }
+
+  function saveTodosLocally(todos) {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
   const handleChange = (event) => { 
     setInputValue(event.target.value)
   }
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
+  useEffect(fetchSavedTodos, [])
+
   return (
     <>
     <button data-testid='dark-light-mode-button'>
