@@ -50,7 +50,7 @@ function App() {
     </form>
     <ul data-testid='todo-list'>
       {
-        todoList.map((todo, index) => <li key={index}>{todo}</li>)
+        todoList.map((todo, index) => <div><li key={index}>{todo}</li><button data-testid='todo-delete-button'></button></div>)
       }
     </ul>
 
@@ -61,5 +61,4 @@ function App() {
 
 export default App;
 
-// Good article for localstorage implementation
-//  https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b
+// 

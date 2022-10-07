@@ -5,6 +5,8 @@ import App from './App';
 var randomstring = require('randomstring')
 const myRandomString = randomstring.generate();
 
+afterEach(cleanup);
+
 test('that headline is on page', () => {
   render(<App />);
   screen.getByText("My Todo List");
@@ -78,10 +80,24 @@ test('that new todo list item is added to top of list', () => {
   expect(todoList.children[0].textContent).toBe(myRandomString2)
 })
 
+test('that when delete a todo item the todo text is no longer on screen', () => {
+  render(<App/>)
+  const myRandomString1 = randomstring.generate();
 
-// test for delete item
-// Add 3 items, delete the top item and expect the remaining to be in same order
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
+  const todoList = screen.getByTestId('todo-list')
+  
+  userEvent.type(todoInputField, myRandomString1)
+  userEvent.click(todoSubmitButton)
+  
+  const deleteButtonOfFirstTodo = screen.getByTestId('todo-delete-button')
+  // currently failing for the wrong reason. The app todoList state variable isnt being reset between tests 
+  userEvent.click(deleteButtonOfFirstTodo)
+  
+
+  expect(screen.getByText(myRandomString1)).toThrow()
+})
 
 
-//test for mark as completed
-// Add 3 items and mark middle one as complete. Check that it has indeed been marked as complete (change dom class or something)
+
