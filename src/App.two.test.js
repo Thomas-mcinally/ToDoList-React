@@ -14,11 +14,10 @@ it('CheckboxWithLabel changes the text after click', () => {
   const todoSubmitButton = screen.getByTestId('add-todo-button')
 
   userEvent.type(todoInputField, myRandomString)
+  userEvent.click(todoSubmitButton)  // this click triggers deleteTodo function
 
-  userEvent.click(todoSubmitButton)  // this click triggers deleteTodo function
-  userEvent.click(todoSubmitButton)  // this click triggers deleteTodo function
   const deleteButtonOfFirstTodo = screen.getAllByTestId('todo-delete-button')[0]
-  // userEvent.click(deleteButtonOfFirstTodo) // this click for some reason doesnt trigger deleteTodo function
+  userEvent.click(deleteButtonOfFirstTodo) 
   expect(() => {screen.getByText(myRandomString)}).toThrow()
 })
 
