@@ -27,6 +27,13 @@ function App() {
   const handleChange = (event) => { 
     setInputValue(event.target.value)
   }
+
+  const deleteTodo = (todoIndex) => {
+    console.log(todoIndex)
+    // setTodoList(todoList.splice(todoIndex, 1))
+  }
+
+
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
   useEffect(fetchSavedTodos, [])
@@ -50,7 +57,7 @@ function App() {
     </form>
     <ul data-testid='todo-list'>
       {
-        todoList.map((todo, index) => <div><li key={index}>{todo}</li><button data-testid='todo-delete-button'></button></div>)
+        todoList.map((todo, index) => <div key={index.toString() + '-div'}><li key={index.toString() + '-li'}>{todo}</li><button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={deleteTodo(index)}></button></div>)
       }
     </ul>
 
@@ -61,4 +68,3 @@ function App() {
 
 export default App;
 
-// 

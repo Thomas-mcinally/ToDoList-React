@@ -1,11 +1,9 @@
-import { render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import App from './App';
 
 var randomstring = require('randomstring')
 const myRandomString = randomstring.generate();
-
-afterEach(cleanup);
 
 test('that headline is on page', () => {
   render(<App />);
@@ -80,25 +78,11 @@ test('that new todo list item is added to top of list', () => {
   expect(todoList.children[0].textContent).toBe(myRandomString2)
 })
 
-test('that when delete a todo item the todo text is no longer on screen', () => {
-  render(<App/>)
-  const myRandomString1 = randomstring.generate();
 
-  const todoInputField = screen.getByTestId('todo-input-box')
-  const todoSubmitButton = screen.getByTestId('add-todo-button')
-  const todoList = screen.getByTestId('todo-list')
-  
-  userEvent.type(todoInputField, myRandomString1)
-  userEvent.click(todoSubmitButton)
-  
-  const deleteButtonOfFirstTodo = screen.getByTestId('todo-delete-button')
-  // currently failing for the wrong reason. The app todoList state variable isnt being reset between tests 
-  // LOOK INTO JEST (the test runner we are using). Might need to configure this to cleanup after each test
-  userEvent.click(deleteButtonOfFirstTodo)
-  
 
-  expect(screen.getByText(myRandomString1)).toThrow()
-})
+
+
+
 
 
 

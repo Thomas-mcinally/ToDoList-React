@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "open-cypress": "./node_modules/.bin/cypress open",
-    "test-cypress": "./node_modules/.bin/cypress run" 
+    "test-cypress": "./node_modules/.bin/cypress run"
   },
   "eslintConfig": {
     "extends": [
