@@ -93,6 +93,7 @@ test('that when delete a todo item the todo text is no longer on screen', () => 
   
   const deleteButtonOfFirstTodo = screen.getByTestId('todo-delete-button')
   // currently failing for the wrong reason. The app todoList state variable isnt being reset between tests 
+  // LOOK INTO JEST (the test runner we are using). Might need to configure this to cleanup after each test
   userEvent.click(deleteButtonOfFirstTodo)
   
 
