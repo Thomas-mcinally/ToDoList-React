@@ -14,7 +14,7 @@ function App() {
 
     setInputValue('')
   }
-  
+
   const fetchSavedTodos = () => {
     let todos;
     if (localStorage.getItem('todos') === null) {
@@ -47,7 +47,7 @@ function App() {
     setInputValue(event.target.value)
   }
 
-  const deleteTodo = (event, todoIndex) => {
+  const deleteTodo = (todoIndex) => {
     const todoListCopy = [...todoList]
     todoListCopy.splice(todoIndex, 1)
     setTodoList(todoListCopy)
@@ -59,7 +59,7 @@ function App() {
     saveTodosStatusLocally(todoStatusCopy)
   }
 
-  const updateTodoStatus = (event, todoIndex) => {
+  const updateTodoStatus = (todoIndex) => {
     const todoStatusCopy = [...todoStatus]
     todoStatusCopy[todoIndex] = 'complete'
     setTodoStatus(todoStatusCopy)
@@ -95,8 +95,8 @@ function App() {
         todoList.map((todo, index) => 
         <div className={todoStatus[index]} data-testid='todo' key={index.toString() + '-div'}>
           <li key={index.toString() + '-li'}>{todo}</li>
-          <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={(e) => updateTodoStatus(e, index)}></button>
-          <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={(e) => deleteTodo(e, index)}></button>
+          <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={() => updateTodoStatus(index)}></button>
+          <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={() => deleteTodo(index)}></button>
         </div>
         )
       }
