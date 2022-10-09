@@ -37,4 +37,16 @@ describe('local storage capability of to-do list app', () => {
     })
 
 
+    it('Remembers correct todostatus of item after delete another item', () => {
+      cy.findByTestId('todo-input-box').type(myRandomString1)
+      cy.findByTestId('add-todo-button').click()
+      cy.findByTestId('todo-input-box').type(myRandomString2)
+      cy.findByTestId('add-todo-button').click()
+
+      cy.findAllByTestId('todo-complete-button').first().click()
+      cy.findAllByTestId('todo-delete-button').first().click()
+      cy.findByTestId('todo').should('have.class', 'uncomplete')
+    })
+  }) 
+
   

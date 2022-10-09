@@ -53,6 +53,11 @@ function App() {
     todoListCopy.splice(todoIndex, 1)
     setTodoList(todoListCopy)
     saveTodosLocally(todoListCopy)
+
+    const todoStatusCopy = [...todoStatus]
+    todoStatusCopy.splice(todoIndex, 1)
+    setTodoStatus(todoStatusCopy)
+    saveTodosStatusLocally(todoStatusCopy)
   }
 
   const updateTodoStatus = (event, todoIndex) => {
