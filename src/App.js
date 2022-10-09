@@ -32,6 +32,7 @@ function App() {
     const todoListCopy = [...todoList]
     todoListCopy.splice(todoIndex, 1)
     setTodoList(todoListCopy)
+    saveTodosLocally(todoListCopy)
   }
 
 
