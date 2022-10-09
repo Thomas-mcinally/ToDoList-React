@@ -14,22 +14,22 @@ function App() {
 
     setInputValue('')
   }
-
-  function fetchSavedTodos() {
+  
+  const fetchSavedTodos = () => {
     let todos;
     if (localStorage.getItem('todos') === null) {
       todos = [];
     } else {
       todos = JSON.parse(localStorage.getItem('todos'));
     }
-    setTodoList(todos)
+    setTodoList(todos)    
   }
 
-  function saveTodosLocally(todos) {
+  const saveTodosLocally = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
-  function fetchSavedTodosStatus() {
+  const fetchSavedTodosStatus = () => {
     let localTodoStatus;
     if (localStorage.getItem('todosStatus') === null) {
       localTodoStatus = [];
@@ -39,10 +39,9 @@ function App() {
     setTodoStatus(localTodoStatus)
   }
 
-  function saveTodosStatusLocally(todos) {
+  const saveTodosStatusLocally = (todos) => {
     localStorage.setItem('todosStatus', JSON.stringify(todos));
   }
-
 
   const handleChange = (event) => { 
     setInputValue(event.target.value)
