@@ -4,11 +4,15 @@ import { useState } from 'react'
 function App() {
   const handleSubmit = (event) => { 
     event.preventDefault()
-    const updatedTodolist = [event.target.children[0].value, ...todoList]
-    setTodoList(updatedTodolist)
-    saveTodosLocally(updatedTodolist)
+    const updatedTodoList = [event.target.children[0].value, ...todoList]
+    setTodoList(updatedTodoList)
+    saveTodosLocally(updatedTodoList)
+
+    const updatedTodosStatusList = ['uncomplete', ...todoStatus]
+    setTodoStatus(updatedTodosStatusList)
+    saveTodosStatusLocally(updatedTodosStatusList)
+
     setInputValue('')
-    setTodoStatus(['uncomplete', ...todoStatus])
   }
 
   function fetchSavedTodos() {
@@ -25,6 +29,21 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
+  function fetchSavedTodosStatus() {
+    let localTodoStatus;
+    if (localStorage.getItem('todosStatus') === null) {
+      localTodoStatus = [];
+    } else {
+      localTodoStatus = JSON.parse(localStorage.getItem('todosStatus'));
+    }
+    setTodoStatus(localTodoStatus)
+  }
+
+  function saveTodosStatusLocally(todos) {
+    localStorage.setItem('todosStatus', JSON.stringify(todos));
+  }
+
+
   const handleChange = (event) => { 
     setInputValue(event.target.value)
   }
@@ -40,12 +59,15 @@ function App() {
     const todoStatusCopy = [...todoStatus]
     todoStatusCopy[todoIndex] = 'complete'
     setTodoStatus(todoStatusCopy)
+    saveTodosStatusLocally(todoStatusCopy)
+
   }
 
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
   const [todoStatus, setTodoStatus] = useState([])
   useEffect(fetchSavedTodos, [])
+  useEffect(fetchSavedTodosStatus, [])
 
   return (
     <>
@@ -74,6 +96,5 @@ function App() {
     </>
   );
 }
-
 export default App;
 

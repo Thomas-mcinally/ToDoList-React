@@ -26,6 +26,15 @@ describe('local storage capability of to-do list app', () => {
       cy.findByTestId('todo-input-box') // need to look for something to finalize the reload
       cy.contains(myRandomString1).should('not.exist')
     })
-  })
+
+    it('remembers todoStatus of items after reload', () => {
+      cy.findByTestId('todo-input-box').type(myRandomString1)
+      cy.findByTestId('add-todo-button').click()
+      cy.findByTestId('todo-complete-button').click()
+      cy.reload()
+      cy.findByTestId('todo-input-box') // need to look for something to finalize the reload
+      cy.findByTestId('todo').should('have.class', 'complete')
+    })
+
 
   
