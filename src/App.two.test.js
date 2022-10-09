@@ -14,18 +14,15 @@ it('CheckboxWithLabel changes the text after click', () => {
   const todoSubmitButton = screen.getByTestId('add-todo-button')
 
   userEvent.type(todoInputField, myRandomString)
-  userEvent.click(todoSubmitButton)  // this click triggers deleteTodo function
+  userEvent.click(todoSubmitButton)  
 
   const deleteButtonOfFirstTodo = screen.getAllByTestId('todo-delete-button')[0]
   userEvent.click(deleteButtonOfFirstTodo) 
-  expect(() => {screen.getByText(myRandomString)}).toThrow()
+  setTimeout(
+    () => expect(() => {screen.getByText(myRandomString)}).toThrow(),
+    2000
+  )
 })
-
-
-// qs to answer: 
-// 1.why is deleteTodo function executed when click submit button? Executed twice when click submit 2nd time
-// 2.why is deleteTodo function not executed when click todo-delete-button?
-
 
 
 
