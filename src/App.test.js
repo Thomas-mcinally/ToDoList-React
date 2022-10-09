@@ -110,6 +110,11 @@ test('that when add two items, then delete the last one, the first one has not b
   screen.getByText(myRandomString1)
 })
 
+test('that when add a new todo item, a mark as complete button appears on screen', () => {
+  render(<App/>)
+})
+
+// Next functionlity to add: mark item as completed
 
 
 
