@@ -83,7 +83,6 @@ test('that when add one item then delete it, the item is no longer visible on pa
   const myRandomString = randomstring.generate();
   const todoInputField = screen.getByTestId('todo-input-box')
   const todoSubmitButton = screen.getByTestId('add-todo-button')
-  screen.debug()
   userEvent.type(todoInputField, myRandomString)
   userEvent.click(todoSubmitButton)  
 
