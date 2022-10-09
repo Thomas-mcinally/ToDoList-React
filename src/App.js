@@ -93,7 +93,13 @@ function App() {
     </form>
     <ul data-testid='todo-list'>
       {
-        todoList.map((todo, index) => <div className={todoStatus[index]} data-testid='todo' key={index.toString() + '-div'}><li key={index.toString() + '-li'}>{todo}</li><button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={(e) => deleteTodo(e, index)}></button><button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={(e) => updateTodoStatus(e, index)}></button></div>)
+        todoList.map((todo, index) => 
+        <div className={todoStatus[index]} data-testid='todo' key={index.toString() + '-div'}>
+          <li key={index.toString() + '-li'}>{todo}</li>
+          <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={(e) => updateTodoStatus(e, index)}></button>
+          <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={(e) => deleteTodo(e, index)}></button>
+        </div>
+        )
       }
     </ul>
 
