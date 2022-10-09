@@ -78,8 +78,38 @@ test('that new todo list item is added to top of list', () => {
   expect(todoList.children[0].textContent).toBe(myRandomString2)
 })
 
+test('that when add one item then delete it, the item is no longer visible on page', () => {
+  render(<App />)
+  const myRandomString = randomstring.generate();
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
+  screen.debug()
+  userEvent.type(todoInputField, myRandomString)
+  userEvent.click(todoSubmitButton)  
 
+  const deleteButtonOfTopTodo = screen.getAllByTestId('todo-delete-button')[0]
+  userEvent.click(deleteButtonOfTopTodo) 
 
+  expect(() => {screen.getByText(myRandomString)}).toThrow()
+})
+
+test('that when add two items, then delete the last one, the first one has not been deleted', () => {
+  render(<App />)
+  const myRandomString1 = randomstring.generate();
+  const myRandomString2 = randomstring.generate();
+  const todoInputField = screen.getByTestId('todo-input-box')
+  const todoSubmitButton = screen.getByTestId('add-todo-button')
+
+  userEvent.type(todoInputField, myRandomString1)
+  userEvent.click(todoSubmitButton)  
+  userEvent.type(todoInputField, myRandomString2)
+  userEvent.click(todoSubmitButton)  
+
+  const deleteButtonOfTopTodo = screen.getAllByTestId('todo-delete-button')[0]
+  userEvent.click(deleteButtonOfTopTodo) 
+
+  screen.getByText(myRandomString1)
+})
 
 
 
