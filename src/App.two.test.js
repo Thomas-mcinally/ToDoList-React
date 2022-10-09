@@ -4,12 +4,9 @@ import App from './App';
 
 var randomstring = require('randomstring')
 
-
-
-it('CheckboxWithLabel changes the text after click', () => {
-  render(<App/>)
+test('that when add one item then delete it, the item is no longer visible on page', () => {
+  render(<App />)
   const myRandomString = randomstring.generate();
-
   const todoInputField = screen.getByTestId('todo-input-box')
   const todoSubmitButton = screen.getByTestId('add-todo-button')
 
@@ -18,12 +15,12 @@ it('CheckboxWithLabel changes the text after click', () => {
 
   const deleteButtonOfFirstTodo = screen.getAllByTestId('todo-delete-button')[0]
   userEvent.click(deleteButtonOfFirstTodo) 
+  
   setTimeout(
     () => expect(() => {screen.getByText(myRandomString)}).toThrow(),
     2000
   )
 })
-
 
 
 
