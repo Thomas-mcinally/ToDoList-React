@@ -29,7 +29,9 @@ function App() {
   }
 
   const deleteTodo = (event, todoIndex) => {
-    setTodoList(todoList.splice(todoIndex, 1))
+    const todoListCopy = [...todoList]
+    todoListCopy.splice(todoIndex)
+    setTodoList(todoListCopy)
   }
 
 

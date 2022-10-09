@@ -3,7 +3,14 @@ import userEvent from '@testing-library/user-event'
 import App from './App';
 
 var randomstring = require('randomstring')
-
+function sleep(milliseconds) {
+  const start = new Date().getTime();
+  for (let i = 0; i < 1e7; i += 1) {
+    if (new Date().getTime() - start > milliseconds) {
+      break;
+    }
+  }
+}
 test('that when add one item then delete it, the item is no longer visible on page', () => {
   render(<App />)
   const myRandomString = randomstring.generate();
@@ -13,14 +20,16 @@ test('that when add one item then delete it, the item is no longer visible on pa
   userEvent.type(todoInputField, myRandomString)
   userEvent.click(todoSubmitButton)  
 
-  const deleteButtonOfFirstTodo = screen.getAllByTestId('todo-delete-button')[0]
-  userEvent.click(deleteButtonOfFirstTodo) 
-  
-  setTimeout(
-    () => expect(() => {screen.getByText(myRandomString)}).toThrow(),
-    2000
-  )
+  const deleteButtonOfTopTodo = screen.getAllByTestId('todo-delete-button')[0]
+  userEvent.click(deleteButtonOfTopTodo) 
+
+  expect(() => {screen.getByText(myRandomString)}).toThrow()
+
+
 })
+
+
+
 
 
 
