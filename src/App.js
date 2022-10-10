@@ -126,7 +126,6 @@ export default App;
 
 // TODO:
 // 1. Styling
+// 2. Filter Box functionality
 // 3. Refactor, add more components
 // 4. Refactor, use setup and teardown in tests
-// 5. Refactor, figure out how to reset state variables between tests
-// 6. Refactor, re-group tests logically
