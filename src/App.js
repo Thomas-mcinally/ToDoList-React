@@ -62,7 +62,7 @@ function App() {
   const updateTodoStatus = (todoIndex) => {
     const todoStatusCopy = [...todoStatus]
     const oldStatus = todoStatusCopy[todoIndex]
-    if (oldStatus == 'uncomplete') {
+    if (oldStatus === 'uncomplete') {
       todoStatusCopy[todoIndex] = 'complete'
       } else {
         todoStatusCopy[todoIndex] = 'uncomplete'
@@ -72,15 +72,25 @@ function App() {
 
   }
 
+  const updateBackgroundMode = () => {
+    const oldMode = backgroundMode
+    if (oldMode === 'light') {
+      setBackgroundMode('dark')
+      } else {
+        setBackgroundMode('light')
+      }
+  }
+
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
   const [todoStatus, setTodoStatus] = useState([])
+  const [backgroundMode, setBackgroundMode] = useState("light")
   useEffect(fetchSavedTodos, [])
   useEffect(fetchSavedTodosStatus, [])
 
   return (
     <>
-    <button data-testid='dark-light-mode-button'>
+    <button data-testid='dark-light-mode-button' className={backgroundMode} onClick={updateBackgroundMode}>
     </button>
     <div className="App">
       <header>My Todo List</header>
@@ -116,8 +126,7 @@ export default App;
 
 // TODO:
 // 1. Styling
-// 2. Add ability to un-toggle status
 // 3. Refactor, add more components
-// 4. Refactor,  use setup and teardown in tests
+// 4. Refactor, use setup and teardown in tests
 // 5. Refactor, figure out how to reset state variables between tests
 // 6. Refactor, re-group tests logically
