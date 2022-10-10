@@ -61,7 +61,12 @@ function App() {
 
   const updateTodoStatus = (todoIndex) => {
     const todoStatusCopy = [...todoStatus]
-    todoStatusCopy[todoIndex] = 'complete'
+    const oldStatus = todoStatusCopy[todoIndex]
+    if (oldStatus == 'uncomplete') {
+      todoStatusCopy[todoIndex] = 'complete'
+      } else {
+        todoStatusCopy[todoIndex] = 'uncomplete'
+      }
     setTodoStatus(todoStatusCopy)
     saveTodosStatusLocally(todoStatusCopy)
 

@@ -5,7 +5,7 @@ import App from './App';
 
 var randomstring = require('randomstring')
 
-test('that when add a new todo item, a mark as complete button appears on screen', () => {
+test('when press the status-update button of the todo, the class of the div changes', () => {
     render(<App/>)
     const myRandomString1 = randomstring.generate();
     const todoInputField = screen.getByTestId('todo-input-box')
@@ -24,4 +24,9 @@ test('that when add a new todo item, a mark as complete button appears on screen
 
     expect(topTodo.className).toBe('complete')
 
+    act( () => {
+        topTodoCompleteButton.click()
+    })
+
+    expect(topTodo.className).toBe('uncomplete')
   })
