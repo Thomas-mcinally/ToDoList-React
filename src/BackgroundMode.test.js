@@ -14,4 +14,8 @@ test('when press background mode button, class of button changes', () => {
     userEvent.click(backgroundButton)
 
     expect(backgroundButton.className).toBe('dark')
+
+    userEvent.click(backgroundButton)
+
+    expect(backgroundButton.className).toBe('light')
   })
