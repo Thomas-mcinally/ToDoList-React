@@ -5,6 +5,18 @@ import App from './App';
 
 var randomstring = require('randomstring')
 
+let myRandomString1
+let todoInputField
+let todoSubmitButton
+
+beforeEach( () => {
+  render(<App/>)
+  myRandomString1 = randomstring.generate();
+  todoInputField = screen.getByTestId('todo-input-box')
+  todoSubmitButton = screen.getByTestId('add-todo-button')
+}
+)
+
 afterEach( () => {
   localStorage.setItem('todosStatus', JSON.stringify([]))
   localStorage.setItem('todos', JSON.stringify([]))
@@ -12,11 +24,6 @@ afterEach( () => {
 )
 
 test('that when add a new todo item, a mark as complete button appears on screen', () => {
-  render(<App/>)
-  const myRandomString1 = randomstring.generate();
-  const todoInputField = screen.getByTestId('todo-input-box')
-  const todoSubmitButton = screen.getByTestId('add-todo-button')
-
   userEvent.type(todoInputField, myRandomString1)
   userEvent.click(todoSubmitButton)  
 
@@ -24,11 +31,6 @@ test('that when add a new todo item, a mark as complete button appears on screen
 })
 
 test('when press the status-update button of the todo, the class of the div changes', () => {
-  render(<App/>)
-  const myRandomString1 = randomstring.generate();
-  const todoInputField = screen.getByTestId('todo-input-box')
-  const todoSubmitButton = screen.getByTestId('add-todo-button')
-
   userEvent.type(todoInputField, myRandomString1)
   userEvent.click(todoSubmitButton)  
 
