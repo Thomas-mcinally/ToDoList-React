@@ -17,6 +17,9 @@ screen.getByTestId('add-todo-button')
 test('that the unordered list containing todo items is rendered', () => {
 screen.getByTestId('todo-list')
 })
+test('that dark/light mode button is rendered', () => {
+  screen.getByTestId('dark-light-mode-button')
+});
 
 
 
