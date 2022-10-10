@@ -17,6 +17,12 @@ beforeEach(() => {
   myRandomString2 = randomstring.generate();
 })
 
+afterEach( () => {
+  localStorage.setItem('todosStatus', JSON.stringify([]))
+  localStorage.setItem('todos', JSON.stringify([]))
+}
+)
+
 test('that when add one item then delete it, the item is no longer visible on page', () => {
     userEvent.type(todoInputField, myRandomString1)
     userEvent.click(todoSubmitButton)  
