@@ -10,7 +10,7 @@ function App() {
 
     const updatedTodosStatusList = ['uncomplete', ...todoStatusList]
     setTodoStatusList(updatedTodosStatusList)
-    saveTodosStatusLocally(updatedTodosStatusList)
+    saveTodosStatusListLocally(updatedTodosStatusList)
 
     setInputValue('')
   }
@@ -39,7 +39,7 @@ function App() {
     setTodoStatusList(localTodoStatus)
   }
 
-  const saveTodosStatusLocally = (todos) => {
+  const saveTodosStatusListLocally = (todos) => {
     localStorage.setItem('todosStatus', JSON.stringify(todos));
   }
 
@@ -56,7 +56,7 @@ function App() {
     const todoStatusCopy = [...todoStatusList]
     todoStatusCopy.splice(todoIndex, 1)
     setTodoStatusList(todoStatusCopy)
-    saveTodosStatusLocally(todoStatusCopy)
+    saveTodosStatusListLocally(todoStatusCopy)
   }
 
   const updateTodoStatus = (todoIndex) => {
@@ -68,7 +68,7 @@ function App() {
         todoStatusCopy[todoIndex] = 'uncomplete'
       }
     setTodoStatusList(todoStatusCopy)
-    saveTodosStatusLocally(todoStatusCopy)
+    saveTodosStatusListLocally(todoStatusCopy)
 
   }
 
@@ -96,7 +96,7 @@ function App() {
   }
   }
 
-  const todoListDivs = () => {
+  const getTodoListDivs = () => {
     return todoList.map((todo, index) => 
     <div style={{display: getByDisplayValue(todoStatusList[index])}} className={todoStatusList[index]} data-testid='todo' key={index.toString() + '-div'}>
       <li key={index.toString() + '-li'}>{todo}</li>
@@ -136,7 +136,7 @@ function App() {
     </form>
     <ul data-testid='todo-list'>
       {
-        todoListDivs()
+        getTodoListDivs()
       }
     </ul>
 
