@@ -76,9 +76,12 @@ function App() {
     const oldMode = backgroundMode
     if (oldMode === 'light') {
       setBackgroundMode('dark')
-      } else {
+      document.body.classList="dark"
+    } 
+    else {
         setBackgroundMode('light')
-      }
+        document.body.classList="light"
+    }
   }
 
   const getByDisplayValue = (todoStatus) => {
@@ -120,7 +123,7 @@ function App() {
 
   return (
     <>
-    <button data-testid='dark-light-mode-button' className={backgroundMode} onClick={updateBackgroundMode}>
+    <button data-testid='dark-light-mode-button' onClick={updateBackgroundMode}>
     </button>
     <div className="App">
       <header>My Todo List</header>
@@ -140,8 +143,6 @@ function App() {
         getTodoListDivs()
       }
     </ul>
-
-
     </>
   );
 }
@@ -150,6 +151,8 @@ export default App;
 
 // TODO:
 // 1. Styling
-// 3. Refactor, break <App /> into many components
+// 2. New feature: Save filterOption in local storage
+// 3. New feature: Block empty todo inputs
+// 4. Refactor, break <App /> into many components
 
 
