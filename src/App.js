@@ -43,7 +43,7 @@ function App() {
     localStorage.setItem('todosStatus', JSON.stringify(todos));
   }
 
-  const handleChange = (event) => { 
+  const handleInputChange = (event) => { 
     setInputValue(event.target.value)
   }
 
@@ -109,6 +109,7 @@ function App() {
   const handleFilter = (event) => {
     setFilterOption(event.target.value)
   }
+
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
   const [todoStatusList, setTodoStatusList] = useState([])
@@ -125,7 +126,7 @@ function App() {
       <header>My Todo List</header>
     </div>
     <form onSubmit={handleSubmit}>
-      <input data-testid='todo-input-box' value={inputValue} onChange={handleChange} />
+      <input data-testid='todo-input-box' value={inputValue} onChange={handleInputChange} />
       <button data-testid='add-todo-button'>
       </button>
       <select data-testid='filter-menu' onChange={handleFilter}>
