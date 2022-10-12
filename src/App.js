@@ -8,8 +8,8 @@ function App() {
     setTodoList(updatedTodoList)
     saveTodosLocally(updatedTodoList)
 
-    const updatedTodosStatusList = ['uncomplete', ...todoStatus]
-    setTodoStatus(updatedTodosStatusList)
+    const updatedTodosStatusList = ['uncomplete', ...todoStatusList]
+    setTodoStatusList(updatedTodosStatusList)
     saveTodosStatusLocally(updatedTodosStatusList)
 
     setInputValue('')
@@ -36,7 +36,7 @@ function App() {
     } else {
       localTodoStatus = JSON.parse(localStorage.getItem('todosStatus'));
     }
-    setTodoStatus(localTodoStatus)
+    setTodoStatusList(localTodoStatus)
   }
 
   const saveTodosStatusLocally = (todos) => {
@@ -53,21 +53,21 @@ function App() {
     setTodoList(todoListCopy)
     saveTodosLocally(todoListCopy)
 
-    const todoStatusCopy = [...todoStatus]
+    const todoStatusCopy = [...todoStatusList]
     todoStatusCopy.splice(todoIndex, 1)
-    setTodoStatus(todoStatusCopy)
+    setTodoStatusList(todoStatusCopy)
     saveTodosStatusLocally(todoStatusCopy)
   }
 
   const updateTodoStatus = (todoIndex) => {
-    const todoStatusCopy = [...todoStatus]
+    const todoStatusCopy = [...todoStatusList]
     const oldStatus = todoStatusCopy[todoIndex]
     if (oldStatus === 'uncomplete') {
       todoStatusCopy[todoIndex] = 'complete'
       } else {
         todoStatusCopy[todoIndex] = 'uncomplete'
       }
-    setTodoStatus(todoStatusCopy)
+    setTodoStatusList(todoStatusCopy)
     saveTodosStatusLocally(todoStatusCopy)
 
   }
@@ -81,9 +81,38 @@ function App() {
       }
   }
 
+  const getByDisplayValue = (todoStatus) => {
+    if ( filterOption==='Completed' && todoStatus==='complete') {
+      return ""
+   }
+   else if ( filterOption==='Uncompleted' && todoStatus==='uncomplete' ){
+      return ""
+   }
+   else if ( filterOption==='All'){
+    return ""
+  }
+  else {
+    return "none"
+  }
+  }
+
+  const todoListDivs = () => {
+    return todoList.map((todo, index) => 
+    <div style={{display: getByDisplayValue(todoStatusList[index])}} className={todoStatusList[index]} data-testid='todo' key={index.toString() + '-div'}>
+      <li key={index.toString() + '-li'}>{todo}</li>
+      <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={() => updateTodoStatus(index)}></button>
+      <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={() => deleteTodo(index)}></button>
+    </div>
+    )
+  }
+
+  const handleFilter = (event) => {
+    setFilterOption(event.target.value)
+  }
   const [inputValue, setInputValue] = useState("")
   const [todoList, setTodoList] = useState([])
-  const [todoStatus, setTodoStatus] = useState([])
+  const [todoStatusList, setTodoStatusList] = useState([])
+  const [filterOption, setFilterOption]= useState('All')
   const [backgroundMode, setBackgroundMode] = useState("light")
   useEffect(fetchSavedTodos, [])
   useEffect(fetchSavedTodosStatus, [])
@@ -99,7 +128,7 @@ function App() {
       <input data-testid='todo-input-box' value={inputValue} onChange={handleChange} />
       <button data-testid='add-todo-button'>
       </button>
-      <select data-testid='filter-menu'>
+      <select data-testid='filter-menu' onChange={handleFilter}>
         <option>All</option>
         <option>Completed</option>
         <option>Uncompleted</option>
@@ -107,13 +136,7 @@ function App() {
     </form>
     <ul data-testid='todo-list'>
       {
-        todoList.map((todo, index) => 
-        <div className={todoStatus[index]} data-testid='todo' key={index.toString() + '-div'}>
-          <li key={index.toString() + '-li'}>{todo}</li>
-          <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={() => updateTodoStatus(index)}></button>
-          <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={() => deleteTodo(index)}></button>
-        </div>
-        )
+        todoListDivs()
       }
     </ul>
 
@@ -126,6 +149,6 @@ export default App;
 
 // TODO:
 // 1. Styling
-// 2. Filter Box functionality
-// 3. Refactor, add more components
-// 4. Refactor, use setup and teardown in tests
+// 3. Refactor, break <App /> into many components
+
+
