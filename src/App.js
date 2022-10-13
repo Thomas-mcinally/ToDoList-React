@@ -127,7 +127,7 @@ function App() {
         <i className="fa-solid fa-cloud-sun"></i>
       </button>
     <div className="App">
-      <header>My Todo List</header>
+      <header> <h1>My Todo List</h1></header>
     </div>
     <form onSubmit={handleSubmit}>
       <input data-testid='todo-input-box' value={inputValue} onChange={handleInputChange} />
@@ -157,8 +157,8 @@ export default App;
 
 // TODO:
 // 1. Styling
-// Header font size
-// Font size inside todolist item box
+// Header and text inside todo item bold, it shouldnt be
+// Add fall animation
 // 2. FIX BUG - Test for background mode button currently red
 // 2. New feature: Save filterOption in local storage
 // 3. New feature: Block empty todo inputs
