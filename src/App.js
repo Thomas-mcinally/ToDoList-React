@@ -157,7 +157,6 @@ export default App;
 
 // TODO:
 // 1. Styling
-// Header and text inside todo item bold, it shouldnt be
 // Add fall animation
 // 2. FIX BUG - Test for background mode button currently red
 // 2. New feature: Save filterOption in local storage
