@@ -85,10 +85,10 @@ function App() {
   }
 
   const getByDisplayValue = (todoStatus) => {
-    if ( filterOption==='Completed' && todoStatus==='complete') {
+    if ( filterOption==='Completed' && /\bcomplete\b/.test(todoStatus)) {
       return ""
    }
-   else if ( filterOption==='Uncompleted' && todoStatus==='uncomplete' ){
+   else if ( filterOption==='Uncompleted' && /\buncomplete\b/.test(todoStatus)) {
       return ""
    }
    else if ( filterOption==='All'){
@@ -101,11 +101,11 @@ function App() {
 
   const getTodoListDivs = () => {
     return todoList.map((todo, index) => 
-    <div style={{display: getByDisplayValue(todoStatusList[index])}} className={todoStatusList[index]} data-testid='todo' key={index.toString() + '-div'}>
-      <li key={index.toString() + '-li'}>{todo}</li>
-      <button data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={() => updateTodoStatus(index)}></button>
-      <button data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={() => deleteTodo(index)}></button>
-    </div>
+      <div style={{display: getByDisplayValue(todoStatusList[index])}} className={"todo " + todoStatusList[index]} data-testid='todo' key={index.toString() + '-div'}>
+        <li className="todo-item" key={index.toString() + '-li'}>{todo}</li>
+        <button className="complete-btn" data-testid="todo-complete-button" key={index.toString() + '-completeButton'} onClick={() => updateTodoStatus(index)}><i className="fas fa-check"></i></button>
+        <button className="trash-btn" data-testid="todo-delete-button" key={index.toString() + '-button'} onClick={() => deleteTodo(index)}><i className="fas fa-trash"></i></button>
+      </div>
     )
   }
 
@@ -123,26 +123,32 @@ function App() {
 
   return (
     <>
-    <button data-testid='dark-light-mode-button' onClick={updateBackgroundMode}>
-    </button>
+      <button className="select_colour" data-testid='dark-light-mode-button' onClick={updateBackgroundMode}>
+        <i className="fa-solid fa-cloud-sun"></i>
+      </button>
     <div className="App">
       <header>My Todo List</header>
     </div>
     <form onSubmit={handleSubmit}>
       <input data-testid='todo-input-box' value={inputValue} onChange={handleInputChange} />
       <button data-testid='add-todo-button'>
+        <i className="fas fa-plus-square"></i>
       </button>
+      <div className="select">
       <select data-testid='filter-menu' onChange={handleFilter}>
         <option>All</option>
         <option>Completed</option>
         <option>Uncompleted</option>
       </select>
+      </div>
     </form>
-    <ul data-testid='todo-list'>
-      {
-        getTodoListDivs()
-      }
-    </ul>
+    <div className="todo-container">
+      <ul className="todo-list" data-testid='todo-list'>
+        {
+          getTodoListDivs()
+        }
+      </ul>
+    </div>
     </>
   );
 }
@@ -151,6 +157,9 @@ export default App;
 
 // TODO:
 // 1. Styling
+// Header font size
+// Font size inside todolist item box
+// 2. FIX BUG - Test for background mode button currently red
 // 2. New feature: Save filterOption in local storage
 // 3. New feature: Block empty todo inputs
 // 4. Refactor, break <App /> into many components

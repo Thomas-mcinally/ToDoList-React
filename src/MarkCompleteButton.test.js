@@ -37,16 +37,16 @@ test('when press the status-update button of the todo, the class of the div chan
   const topTodoCompleteButton = screen.getAllByTestId('todo-complete-button')[0]
   const topTodo = screen.getAllByTestId('todo')[0]
 
-  expect(topTodo.className).toBe('uncomplete')
+  expect(topTodo.className).toBe('todo uncomplete')
   act( () => {
       topTodoCompleteButton.click()
   })
 
-  expect(topTodo.className).toBe('complete')
+  expect(topTodo.className).toBe('todo complete')
 
   act( () => {
       topTodoCompleteButton.click()
   })
 
-  expect(topTodo.className).toBe('uncomplete')
+  expect(topTodo.className).toBe('todo uncomplete')
   })

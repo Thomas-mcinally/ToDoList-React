@@ -5,17 +5,16 @@ import App from './App';
 let backgroundButton
 beforeEach(() => {
   render(<App />)
-  backgroundButton = screen.getByTestId('dark-light-mode-button')
 })
 
 test('when press background mode button, class of button changes', () => {
-    expect(backgroundButton.className).toBe('light')
+    expect(document.body.classList).toBe('light')
 
     userEvent.click(backgroundButton)
 
-    expect(backgroundButton.className).toBe('dark')
+    expect(document.body.classList).toBe('dark')
 
     userEvent.click(backgroundButton)
 
-    expect(backgroundButton.className).toBe('light')
+    expect(document.body.classList).toBe('light')
   })
