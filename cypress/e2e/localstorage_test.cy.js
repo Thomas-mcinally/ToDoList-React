@@ -48,5 +48,4 @@ describe('local storage capability of to-do list app', () => {
       cy.findByTestId('todo').should('have.class', 'uncomplete')
     })
   }) 
-
   

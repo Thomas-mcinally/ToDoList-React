@@ -156,9 +156,7 @@ export default App;
 
 
 // TODO:
-// 1. Styling
-// Add fall animation
-// 2. FIX BUG - Test for background mode button currently red
+// 1. Add falling animation when delete todo
 // 2. New feature: Save filterOption in local storage
 // 3. New feature: Block empty todo inputs
 // 4. Refactor, break <App /> into many components
