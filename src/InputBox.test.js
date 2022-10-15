@@ -49,3 +49,9 @@ test('that new todo list item is added to top of list', () => {
 
   expect(todoList.children[0].textContent).toBe(myRandomString2)
 })
+
+test('that empty inputs are blocked', () => {
+  userEvent.click(todoSubmitButton)
+
+  expect(() => {screen.getByTestId('todo')}).toThrow()
+})

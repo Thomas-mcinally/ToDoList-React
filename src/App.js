@@ -2,17 +2,23 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 function App() {
-  const handleSubmit = (event) => { 
+  const handleSubmit = (event) => {
+    const todoText = event.target.children[0].value
     event.preventDefault()
-    const updatedTodoList = [event.target.children[0].value, ...todoList]
-    setTodoList(updatedTodoList)
-    saveTodosLocally(updatedTodoList)
+    if (todoText === "") {
+      return
+    }
+    else {
+      const updatedTodoList = [todoText, ...todoList]
+      setTodoList(updatedTodoList)
+      saveTodosLocally(updatedTodoList)
 
-    const updatedTodosStatusList = ['uncomplete', ...todoStatusList]
-    setTodoStatusList(updatedTodosStatusList)
-    saveTodosStatusListLocally(updatedTodosStatusList)
+      const updatedTodosStatusList = ['uncomplete', ...todoStatusList]
+      setTodoStatusList(updatedTodosStatusList)
+      saveTodosStatusListLocally(updatedTodosStatusList)
 
-    setInputValue('')
+      setInputValue('')
+    }
   }
 
   const fetchSavedTodos = () => {
@@ -173,6 +179,9 @@ export default App;
 
 // TODO:
 // 1. Add falling animation when delete todo
+// 2. Put online
+// 3. Make it work better for large inputs (maybe add a notes sub-section for each todo?)
+// 4. Set up CI\CD pipeline
 // 3. New feature: Block empty todo inputs
 // 4. Refactor, break <App /> into many components
 
