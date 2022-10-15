@@ -43,6 +43,19 @@ function App() {
     localStorage.setItem('todosStatus', JSON.stringify(todos));
   }
 
+  const fetchFilterOption = () => {
+    let localFilterOption;
+    if (localStorage.getItem('filterOption') === null) {
+      localFilterOption = "All";
+    } else {
+      localFilterOption = JSON.parse(localStorage.getItem('filterOption'));
+    }
+    setFilterOption(localFilterOption)
+  }
+
+  const saveFilterOptionLocally = (option) => {
+    localStorage.setItem('filterOption', JSON.stringify(option));
+  }
   const handleInputChange = (event) => { 
     setInputValue(event.target.value)
   }
@@ -111,6 +124,8 @@ function App() {
 
   const handleFilter = (event) => {
     setFilterOption(event.target.value)
+    saveFilterOptionLocally(event.target.value)
+    
   }
 
   const [inputValue, setInputValue] = useState("")
@@ -120,6 +135,7 @@ function App() {
   const [backgroundMode, setBackgroundMode] = useState("light")
   useEffect(fetchSavedTodos, [])
   useEffect(fetchSavedTodosStatus, [])
+  useEffect(fetchFilterOption, [])
 
   return (
     <>
@@ -135,7 +151,7 @@ function App() {
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
-      <select data-testid='filter-menu' onChange={handleFilter}>
+      <select data-testid='filter-menu' value={filterOption} onChange={handleFilter}>
         <option>All</option>
         <option>Completed</option>
         <option>Uncompleted</option>
@@ -157,7 +173,6 @@ export default App;
 
 // TODO:
 // 1. Add falling animation when delete todo
-// 2. New feature: Save filterOption in local storage
 // 3. New feature: Block empty todo inputs
 // 4. Refactor, break <App /> into many components
 
