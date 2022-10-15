@@ -23,4 +23,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: CI=true npm test
-      - run: npm test-cypress
+      - run: npm start
+      - run: npm run test-cypress
