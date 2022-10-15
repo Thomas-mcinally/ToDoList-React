@@ -1,4 +1,4 @@
-name: Test Code Base
+name: Test Code Base with Jest
 
 on:
   push:
@@ -23,5 +23,3 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: CI=true npm test
-      - run: npm start
-      - run: npm run test-cypress

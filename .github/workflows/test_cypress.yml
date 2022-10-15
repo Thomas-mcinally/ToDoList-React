@@ -1,0 +1,21 @@
+name: Test codebase with cypress
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run build
+          start: npm start
+          wait-on: http://localhost:3030
