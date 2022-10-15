@@ -1,6 +1,6 @@
 {
-  "homepage": "https://thomas-mcinally.github.io/ToDoList-React/",
   "name": "my-app",
+  "homepage": "https://thomas-mcinally.github.io/ToDoList-React/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
