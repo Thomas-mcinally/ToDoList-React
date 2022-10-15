@@ -177,12 +177,4 @@ function App() {
 export default App;
 
 
-// TODO:
-// 1. Add falling animation when delete todo
-// 2. Put online
-// 3. Make it work better for large inputs (maybe add a notes sub-section for each todo?)
-// 4. Set up CI\CD pipeline
-// 3. New feature: Block empty todo inputs
-// 4. Refactor, break <App /> into many components
-
 
