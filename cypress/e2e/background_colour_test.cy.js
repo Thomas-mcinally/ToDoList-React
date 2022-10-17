@@ -5,33 +5,23 @@ describe('dark/light mode toggle feature of to-do list app', () => {
       cy.visit('http://localhost:3000/')
     })
 
-    it('is in light mode initially', () => {
-
-      cy.get('body').should('have.class', 'light')
-
-      const backgroundButton = cy.findByTestId('dark-light-mode-button')
-
-      backgroundButton.click()
+    it('is in dark mode initially', () => {
 
       cy.get('body').should('have.class', 'dark')
-
-      backgroundButton.click()
-
-      cy.get('body').should('have.class', 'light')
 
     })
 
-    it('is able to switch to darkmode and then back to light mode', () => {
+    it('is able to switch to lightmode and then back to dark mode', () => {
 
       const backgroundButton = cy.findByTestId('dark-light-mode-button')
 
       backgroundButton.click()
 
-      cy.get('body').should('have.class', 'dark')
+      cy.get('body').should('have.class', 'light')
 
       backgroundButton.click()
 
-      cy.get('body').should('have.class', 'light')
+      cy.get('body').should('have.class', 'dark')
 
     })
   }) 

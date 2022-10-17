@@ -138,7 +138,7 @@ function App() {
   const [todoList, setTodoList] = useState([])
   const [todoStatusList, setTodoStatusList] = useState([])
   const [filterOption, setFilterOption]= useState('All')
-  const [backgroundMode, setBackgroundMode] = useState("light")
+  const [backgroundMode, setBackgroundMode] = useState("dark")
   useEffect(fetchSavedTodos, [])
   useEffect(fetchSavedTodosStatus, [])
   useEffect(fetchFilterOption, [])
