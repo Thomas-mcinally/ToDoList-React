@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/ToDoList-React/static/js/main.b8dbb15d.js",
-    "index.html": "/ToDoList-React/index.html",
-    "main.b8dbb15d.js.map": "/ToDoList-React/static/js/main.b8dbb15d.js.map"
+    "main.js": "/todolist.thomasmcinally.com/static/js/main.67906dd6.js",
+    "index.html": "/todolist.thomasmcinally.com/index.html",
+    "main.67906dd6.js.map": "/todolist.thomasmcinally.com/static/js/main.67906dd6.js.map"
   },
   "entrypoints": [
-    "static/js/main.b8dbb15d.js"
+    "static/js/main.67906dd6.js"
   ]
 }
