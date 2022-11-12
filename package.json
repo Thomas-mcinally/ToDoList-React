@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "homepage": "todolist.thomasmcinally.com",
+  "homepage": "https://todolist.thomasmcinally.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
