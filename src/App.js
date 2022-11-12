@@ -165,7 +165,6 @@ function App() {
       </div>
     </form>
     <div className="todo-container">
-      <p>Hello</p>
       <ul className="todo-list" data-testid='todo-list'>
         {
           getTodoListDivs()
