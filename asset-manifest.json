@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/todolist.thomasmcinally.com/static/js/main.67906dd6.js",
-    "index.html": "/todolist.thomasmcinally.com/index.html",
-    "main.67906dd6.js.map": "/todolist.thomasmcinally.com/static/js/main.67906dd6.js.map"
+    "main.js": "/static/js/main.67906dd6.js",
+    "index.html": "/index.html",
+    "main.67906dd6.js.map": "/static/js/main.67906dd6.js.map"
   },
   "entrypoints": [
     "static/js/main.67906dd6.js"
